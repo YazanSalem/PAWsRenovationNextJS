@@ -1,0 +1,109 @@
+
+.profile-card {
+    margin: 50px auto;
+    max-width: 800px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .personal-info {
+    background-color: #f9f9f9;
+    padding: 20px;
+  }
+  
+  .academic-info {
+    background-color: #fff;
+    padding: 20px;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    color: #555;
+  }
+  .section-divider {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .info-label {
+    font-weight: bold;
+    width: 31%;
+    margin-right: 10px;
+  }
+  
+  .info-value {
+    width: calc(80% - 50px);
+  }
+  
+  @media (max-width: 767px) {
+    .info-row {
+      flex-direction: column;
+    }
+  
+    .info-label {
+      width: 100%;
+      margin-bottom: 5px;
+    }
+  
+    .info-value {
+      width: 100%;
+    }
+  }
+  
+.profile_format{
+    color: black;
+    font-size: 75px;
+    font-family: 'Arial', Times, serif;
+  }
+  
+  info_header{
+    font-size: 30px;
+    font-family: 'Arial', Times, serif;
+  }
+
+  .name_header {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 8%;
+    -ms-transform: translate(-8%, -50%);
+    transform: translate(-8%, -50%);
+    font-size: 45px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .edit_button {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 85%;
+    -ms-transform: translate(-85%, -50%);
+    transform: translate(-85%, -50%);
+  }
+
+  .profile_pic{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 2%;
+    -ms-transform: translate(-2%, -50%);
+    transform: translate(-2%, -50%);
+  }
+  
+  .header_container{
+    height: 85px;
+    position: relative;
+  }

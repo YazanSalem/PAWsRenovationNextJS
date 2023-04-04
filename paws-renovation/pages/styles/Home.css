@@ -1,0 +1,198 @@
+.App {
+    text-align: center;
+    min-height: 100vh;
+  }
+  
+  .App-header {
+    background-color: #282c34;
+    min-height: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  
+  .row {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .col {
+    width: 100%;
+    padding: 0 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .hold-list {
+    background-color: #f8d7da;
+    padding: 1rem;
+    border-radius: 0.25rem;
+  }
+  
+  .todo-list {
+    background-color: #d4edda;
+    padding: 1rem;
+    border-radius: 0.25rem;
+  }
+  
+  .emergency-contact,
+  .home-address,
+  .mailing-address {
+    background-color: #fff;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .see-schedule,
+.see-transcript {
+  display: block;
+  padding: 10px;
+margin-top: 20px;
+margin-left: auto;
+margin-right: auto;
+width: 150px;
+border-radius: 20px;
+color: #fff;
+font-size: 16px;
+font-weight: bold;
+text-align: center;
+background-color: #007bff;
+border: none;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+
+.see-schedule:hover,
+.see-transcript:hover {
+background-color: #0069d9;
+}
+/* Holds and To-Dos section */
+.holds-todos {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
+  
+  .holds-list,
+  .todos-list {
+    width: 48%;
+  }
+  
+  .holds-list {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+  
+  .todos-list {
+    background-color: #d4edda;
+    color: #155724;
+  }
+  
+  .holds-list h2,
+  .todos-list h2 {
+    background-color: #c82333;
+    color: white;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    text-align: center;
+  }
+  
+  .holds-list ul,
+  .todos-list ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .holds-list li,
+  .todos-list li {
+    padding: 0.5rem;
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  /* User Information section */
+  .user-info {
+    margin-bottom: 2rem;
+  }
+  
+  .user-info h2 {
+    background-color: #343a40;
+    color: white;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    text-align: center;
+  }
+  
+  .user-info ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .user-info li {
+    padding: 0.5rem;
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  .user-info li:last-child {
+    border-bottom: none;
+  }
+  
+  /* Academics section */
+  .academics {
+    margin-bottom: 2rem;
+  }
+  
+  .academics h2 {
+    background-color: #ffc107;
+    color: white;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    text-align: center;
+  }
+  
+  .see-schedule,
+  .see-transcript {
+    background-color: #ff9800;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-right: 1rem;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease-in-out;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  .see-schedule {
+    margin-bottom: 1.5rem;
+  }
+
+  .see-schedule:hover,
+  .see-transcript:hover {
+    background-color: #c66900;
+  }
+
+  /* Responsive Styles */
+  @media screen and (max-width: 768px) {
+    .holds-todos {
+      flex-direction: column;
+    }
+    
+    .holds-list,
+    .todos-list {
+      width: 100%;
+    }
+  }
