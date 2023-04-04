@@ -1,91 +1,100 @@
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from './page.module.css'
+import { LockClosedIcon } from '@heroicons/react/20/solid'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+export default function LoginForm() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
+    <>
+    {/*
+      This example requires updating your template:
+
+      ```
+      <html class="h-full bg-gray-50">
+      <body class="h-full">
+      ```
+    */}
+    <div className="flex min-h-full items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
+      <div className="w-full max-w-md space-y-8">
         <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+          <img
+            className="mx-auto h-auto max-w-full rounded-lg"
+            src="https://i0.wp.com/uwmpost.com/wp-content/uploads/2016/11/paws.1.u.png?ssl=1"
+            alt="Your Company"
+          />
+          <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-yellow-500">
+            Sign in to your account
+          </h2>
         </div>
+        <form className="mt-8 space-y-6" action="#" method="POST">
+          <input type="hidden" name="remember" defaultValue="true" />
+          <div className="-space-y-px rounded-md shadow-sm">
+            <div>
+              <label htmlFor="email-address" className="sr-only">
+                Email address
+              </label>
+              <input
+                id="email-address"
+                name="email"
+                type="email"
+                autoComplete="email"
+                required
+                className="relative block w-full rounded-t-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                placeholder="Email address"
+              />
+            </div>
+            <div>
+              <label htmlFor="password" className="sr-only">
+                Password
+              </label>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                autoComplete="current-password"
+                required
+                className="relative block w-full rounded-b-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                placeholder="Password"
+              />
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between">
+            <div className="flex items-center">
+              <input
+                id="remember-me"
+                name="remember-me"
+                type="checkbox"
+                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+              />
+              <label htmlFor="remember-me" className="ml-2 block text-sm text-yellow-500">
+                Remember me
+              </label>
+            </div>
+
+            <div className="text-sm">
+              <a href="#" className="font-medium text-yellow-500 hover:text-yellow-400">
+                Forgot your password?
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <button
+              type="submit"
+              className="group relative flex w-full justify-center rounded-md bg-yellow-600 px-3 py-2 text-sm font-semibold text-white hover:bg-yellow-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            >
+              <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+                <LockClosedIcon className="h-5 w-5 text-yellow-500 group-hover:text-yellow-400" aria-hidden="true" />
+              </span>
+              Sign in
+            </button>
+          </div>
+        </form>
       </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-        <div className={styles.thirteen}>
-          <Image src="/thirteen.svg" alt="13" width={40} height={31} priority />
-        </div>
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    </div>
+  </>
   )
 }
