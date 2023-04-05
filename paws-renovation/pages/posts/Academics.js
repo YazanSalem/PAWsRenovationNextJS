@@ -3,23 +3,21 @@ import '../styles/custom.css'
 export default function Academics() {
   return(
     <div>
-    <table>
      <tr>
-       <td>Class</td>
-       <td>Grade</td>
-       <td>Credits</td>
-       <td>Intructor</td>
-       <td>Status</td>
+       <ul>Class</ul>
+       <ul>Grade</ul>
+       <ul>Credits</ul>
+       <ul>Intructor</ul>
+       <ul>Status</ul>
      </tr>
      <hr></hr>
      <tr>
-       <td>History</td>
-       <td>95%</td>
-       <td>3</td>
-       <td>Sam Walsh</td>
-       <td>Enrolled</td>
+       <ul>History</ul>
+       <ul>95%</ul>
+       <ul>3</ul>
+       <ul>Sam Walsh</ul>
+       <ul>Enrolled</ul>
      </tr>
-   </table>
  </div>
   )
 }

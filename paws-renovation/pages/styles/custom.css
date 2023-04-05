@@ -20,7 +20,6 @@ code {
 .back_drop{
   border: solid rgb(254, 189, 1);
   border-width: 30px 100px 200px;
-  height: fit-content;
 }
 
 .container {

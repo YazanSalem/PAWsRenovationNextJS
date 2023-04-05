@@ -1,13 +1,16 @@
-import Navbar from './navbar'
-import Footer from './footer'
+import NavMenu from './NavMenu'
+import '../styles/Profile.css'
 
 export default function Layout({ children }) {
   return (
     <>
-      <Navbar />
-      <div>Hello</div>
-      <main>{children}</main>
-      <Footer />
+    <div>
+    
+    <NavMenu />
+        <div className='back_drop'>
+            <main>{children}</main>
+        </div>
+    </div>
     </>
   )
 }

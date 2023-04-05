@@ -24,3 +24,15 @@ html {
   
 
 }
+.navbar {
+  border-color: black;
+  border-style: solid;
+  border-top: 2px;
+  border-left: 0 ;
+  border-right: 0;
+}
+
+.pagelinks{
+  text-align: center;
+  border: gray;
+}

@@ -1,16 +1,21 @@
 import '../styles/Profile.css'
+import Layout from './layout';
 
 export default function Profile() {
   return (
+    <Layout>
     <div id="profile_format">
     <ul className="header mb-3">
       <div className="finances-header">
       <h1>Profile</h1>
       </div>
     </ul>
-   {renderPersonalInfo()}
-</div>
+    {renderPersonalInfo()}
+  </div>
+  </Layout>
   );}
+  
+  
   function renderPersonalInfo()
   { 
     return( 
