@@ -1,6 +1,10 @@
+import Footer from '../components/footer'
+import Navbar from "../components/navbar"
+
 export default function Academics(){
     return(
-        //NavBar / Layout
+        <>
+        <Navbar/>
         <div className="overflow-hidden bg-white min-h-screen shadow sm:rounded-lg">
             <div className="px-4 py-5 sm:px-6">
                 <h3 className="text-base font-semibold leading-6 text-gray-900">Academics Page</h3>
@@ -43,7 +47,7 @@ export default function Academics(){
             <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-4 sm:gap-4 sm:px-6 flex flex-col items-center justify-center">
                 <dt></dt>
                 <dt className="border-2 border-black-100 py-3 text-center">
-                    <button>Add Class</button>
+                    <a href='/classlist'>Add Class</a>
                 </dt>
                 <dt className="border-2 border-black-100 py-3 text-center">
                     <button>Edit Class List</button>
@@ -51,5 +55,7 @@ export default function Academics(){
                 <dt></dt>
             </div>           
         </div>
+    <Footer/>
+    </>
     )
 }
