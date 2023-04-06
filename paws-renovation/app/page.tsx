@@ -1,21 +1,9 @@
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
 import styles from './page.module.css'
 import { LockClosedIcon } from '@heroicons/react/20/solid'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export default function LoginForm() {
   return (
     <>
-    {/*
-      This example requires updating your template:
-
-      ```
-      <html class="h-full bg-gray-50">
-      <body class="h-full">
-      ```
-    */}
     <div className="flex min-h-full items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
       <div className="w-full max-w-md space-y-8">
         <div>
