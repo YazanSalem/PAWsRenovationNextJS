@@ -64,7 +64,7 @@ export default function ProfileCard() {
 
             <div className="text-center my-3">
               <a
-                className="text-xs text-yellow-600 italic hover:underline hover:text-indigo-600 font-medium"
+                className="text-xs text-yellow-600 italic hover:underline hover:text-yellow-700 font-medium"
                 href="#"
               >
                 Edit Profile
