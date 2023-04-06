@@ -1,8 +1,11 @@
 import { PencilIcon } from '@heroicons/react/20/solid'
+import Footer from '../components/footer'
+import Navbar from "../components/navbar"
 
 export default function Profile(){
     return(
-    // NAVBAR
+      <>
+    <Navbar/>
     <div className="overflow-hidden bg-white min-h-screen shadow sm:rounded-lg">
       <div className="px-4 py-5 sm:px-6">
         <h3 className="text-base font-semibold leading-6 text-gray-900">Profile Page</h3>
@@ -61,5 +64,7 @@ export default function Profile(){
         </dl>
       </div>
     </div>
+    <Footer/>
+    </>
     )
 }
