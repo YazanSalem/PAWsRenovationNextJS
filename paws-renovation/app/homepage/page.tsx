@@ -1,6 +1,7 @@
+import Link from "next/link";
 import Footer from "../components/footer";
 import Navbar from "../components/navbar";
-import { LockClosedIcon, ListBulletIcon } from "@heroicons/react/20/solid";
+import { LockClosedIcon, ListBulletIcon, UserIcon } from "@heroicons/react/20/solid";
 
 const features = [
   {
@@ -14,7 +15,7 @@ const features = [
     description:
       "Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.",
     icon: ListBulletIcon,
-  },
+  }
 ];
 
 export default function HomePage() {
@@ -58,6 +59,17 @@ export default function HomePage() {
                       <dd className="inline">{feature.description}</dd>
                     </div>
                   ))}
+                    <div key="Advisor" className="relative pl-9">
+                      <dt className="inline font-semibold text-gray-900">
+                        <UserIcon
+                          className="absolute left-1 top-1 h-5 w-5 text-yellow-500"
+                          aria-hidden="true"
+                        />
+                        Advisor
+                      </dt>{" "}
+                      <Link href="/advisor" className="text-xs text-yellow-600 italic hover:underline hover:text-yellow-700 font-medium">Jennie Klump</Link>
+                    </div>
+                  
                 </dl>
               </div>
             </div>

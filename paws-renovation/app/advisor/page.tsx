@@ -1,12 +1,12 @@
 import Footer from "../components/footer";
 import Navbar from "../components/navbar";
-import ProfileCard from "./components/profileCard";
+import AdvisorCard from "./components/advisorCard";
 
-export default function Profile() {
+export default function AdvisorPage() {
   return (
     <>
       <Navbar />
-        <ProfileCard/>
+      <AdvisorCard />
       <Footer />
     </>
   );

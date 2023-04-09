@@ -3,12 +3,23 @@ import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
+
 const navigation = [
   { name: "Home", href: "/homepage", current: true },
   { name: "Academics", href: "/academics", current: false },
   { name: "Financial Aid", href: "/financialaid", current: false },
   { name: "Schedule", href: "/schedule", current: false },
 ];
+
+function handleNavigation(itemName: string){
+  navigation.forEach((item) =>{
+    if(item.name === itemName){
+      item.current = true;
+    }else{
+      item.current = false;
+    }
+  });
+}
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -112,7 +123,7 @@ export default function Navbar() {
                       <Menu.Item>
                         {({ active }) => (
                           <a
-                            href="#"
+                            href="/settings"
                             className={classNames(
                               active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700"
@@ -147,6 +158,7 @@ export default function Navbar() {
               {navigation.map((item) => (
                 <Disclosure.Button
                   key={item.name}
+                  onClick={()=> handleNavigation(item.name)}
                   as="a"
                   href={item.href}
                   className={classNames(
