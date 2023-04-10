@@ -1,0 +1,154 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+//Schema password: UepE7xubf3Gijg6
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User{
+  id  Int @id @default(autoincrement())
+  //can include type later if we get to admin/instructor roles for now everybodys a student until we catch up
+  first_name String  
+  last_name String  
+  image   String
+  address String
+  phone String  @unique//string phone numbers can reach integer.max 
+  email String  @unique
+  major String
+  minor String?
+  country String
+  city  String
+  state String
+  zip Int
+  password  String  @db.Text
+  is_commuting Boolean
+
+  ToDos ToDo[]
+  Holds Hold[]
+  Courses Course[]
+  FinancialAid  FinancialAid[]
+
+  advisor_id Int
+  advisor Advisor @relation(fields: [advisor_id], references: [id])
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt 
+}
+
+model ToDo{
+  id  Int @id @default(autoincrement())
+  description String
+
+  user_id Int
+  user User @relation(fields: [user_id], references: [id])
+
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt 
+}
+
+model Hold{
+  id  Int @id @default(autoincrement())
+  description String
+
+  user_id Int
+  user User @relation(fields: [user_id], references: [id])
+
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt 
+}
+
+//this is a model bc not expect an advisor to be a user, using this to book
+//meetings with user
+
+model Advisor{
+  id  Int @id @default(autoincrement())
+  first_name String  
+  last_name String
+  image String  
+  program String
+  email String  @unique
+  phone String  @unique
+  building  String
+  office  String
+
+  users User[]  
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt 
+}
+
+model Course{
+  id  Int @id @default(autoincrement())
+  name  String  @unique
+  shortened_name  String
+  credits Int
+  fee Float
+  instructor  String
+  topic String //used for search filters
+  class_number  Int
+  class_section Int
+  room  String
+  grade String
+
+  users User[]
+
+  term  Term
+  enrolled_status EnrolledStatus
+  class_days  ClassDays
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt 
+}
+
+model FinancialAid{
+  id  Int @id @default(autoincrement())
+  name  String
+  amount  Float
+  is_accepted Boolean
+
+  aid_type  AidType
+  term  Term
+
+  user_id Int
+  user User @relation(fields: [user_id], references: [id])
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt 
+}
+
+enum AidType{
+  Scholarship
+  Grant
+  Loan
+}
+
+enum Term{
+  Spring2023
+  Summer2023
+  Fall2023
+}
+
+enum EnrolledStatus{
+  Dropped
+  Withdrew
+  Enrolled
+  Completed
+}
+
+enum  ClassDays{
+  M
+  Tu
+  W
+  Th
+  Fr
+  MoWe
+  TuTh
+  MoWeFr
+  NoMeetingPattern
+}
