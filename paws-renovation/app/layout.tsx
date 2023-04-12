@@ -1,3 +1,4 @@
+import AuthContext from './context/AuthContext'
 import './globals.css'
 
 export default function RootLayout({
@@ -12,7 +13,11 @@ export default function RootLayout({
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body className="h-full bg-white">{children}</body>
+      <body className="h-full bg-white">
+        <AuthContext>
+          {children}
+        </AuthContext>
+      </body>
     </html>
   )
 }

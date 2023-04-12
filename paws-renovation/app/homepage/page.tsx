@@ -30,9 +30,32 @@ const fetchAdvisor = async (advisorId: number) => {
   return advisor;
 };
 
+const fetchTodos = async (userId: number) => {
+  const todos = await prisma.toDo.findMany({
+    where: {
+      user_id: userId,
+    },
+  });
+
+  return todos;
+};
+
+const fetchHolds = async (userId: number) => {
+  const holds = await prisma.hold.findMany({
+    where: {
+      user_id: userId,
+    },
+  });
+
+  return holds;
+};
+
 export default async function HomePage() {
   const user = await fetchUser();
   const advisor = await fetchAdvisor(user?.advisor_id ? user.advisor_id : 1);
+  const holds = await fetchHolds(user?.id ? user.id : 1);
+  const todos = await fetchTodos(user?.id ? user.id : 1);
+  
 
   return (
     <>
@@ -70,7 +93,7 @@ export default async function HomePage() {
                       />
                       Holds
                     </dt>{" "}
-                    <dd className="inline">Fake description</dd>
+                    <dd className="inline">{holds.length == 0 ? "You currently do not have any To Dos!" : holds.map(hold => hold.description).join(", ")}</dd>
                   </div>
                   <div key="Todos" className="relative pl-9">
                     <dt className="inline font-semibold text-gray-900">
@@ -80,7 +103,7 @@ export default async function HomePage() {
                       />
                       To Dos
                     </dt>{" "}
-                    <dd className="inline"></dd>
+                    <dd className="inline">{todos.length == 0 ? "You currently do not have any To Dos!" : todos.map(todo => todo.description).join(", ")}</dd>
                   </div>
                   <div key="Advisor" className="relative pl-9">
                     <dt className="inline font-semibold text-gray-900">
@@ -91,10 +114,7 @@ export default async function HomePage() {
                       Advisor
                     </dt>{" "}
                     <Link
-                      href={{
-                        pathname: "/advisor",
-                        query: {id: advisor?.id}
-                      }}
+                      href="/advisor"
                       className="text-xs text-yellow-600 italic hover:underline hover:text-yellow-700 font-medium"
                     >
                       {advisor?.first_name + " " + advisor?.last_name}{" "}
