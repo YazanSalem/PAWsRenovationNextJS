@@ -28,6 +28,7 @@ const useAuth = () => {
             handleSuccess();
         } catch (error: any) {
             
+            console.log("Hello");
             setAuthState({
                 data: null,
                 error: error.response.data.errorMessage,
