@@ -97,7 +97,23 @@ export default function Academics(){
                     <button>Edit Class List</button>
                 </dt>
                 <dt></dt>
-            </div>           
+            </div> 
+            <div className="px-3 py-5 sm:px-6">
+                <h3 className="text-base font-semibold leading-6 text-gray-900">Course History</h3>
+            </div>
+            <div className="border-2 border-gray-200">
+                    <div className="border-b-4 border-thick border-black-100">
+                        <div className="bg-gray-50 px-12 py-0 sm:grid sm:grid-cols-4 sm:gap-1 sm:px-1">
+                            <dt className="text-medium font-medium text-black-500">Course</dt>
+                            
+                            <dt className="text-medium font-medium text-black-500">Term</dt>
+                            
+                            <dt className="text-medium font-medium text-black-500">Professor</dt>
+                            
+                            <dt className="text-medium font-medium text-black-500">Availabilty</dt>
+                        </div>
+                    </div>
+            </div>        
         </div>
         
     <Footer/>
