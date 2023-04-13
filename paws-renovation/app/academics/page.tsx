@@ -24,7 +24,7 @@ export default function Academics(){
                         </div>
                     </div>
                     <div>
-                        <div className="bg-gray-50 px-12 py-2 sm:grid sm:grid-cols-5 sm:gap-1 sm:px-1">
+                        <div className="bg-teal bg-opacity-25 px-12 py-2 sm:grid sm:grid-cols-5 sm:gap-1 sm:px-1">
                             <dt className="text-small font-small text-black-500">Classname</dt>
                             
                             <dt className="text-small font-small text-black-500">Term</dt>
@@ -66,7 +66,7 @@ export default function Academics(){
                         </div>
                     </div>
                     <div>
-                        <div className="bg-gray-50 px-12 py-2 sm:grid sm:grid-cols-4 sm:gap-1 sm:px-1">
+                        <div className="bg-teal bg-opacity-25 px-12 py-2 sm:grid sm:grid-cols-4 sm:gap-1 sm:px-1">
                             <dt className="text-small font-small text-black-500">Classname</dt>
                             
                             <dt className="text-small font-small text-black-500">Term</dt>
@@ -120,4 +120,3 @@ export default function Academics(){
     </>
     )
 }
-//TODO Course List, Shopping Cart

@@ -1,10 +1,6 @@
 import Footer from '../components/footer'
 import Navbar from "../components/navbar"
-import { StarIcon} from '@heroicons/react/24/outline'
 import { CheckCircleIcon,StopCircleIcon,ExclamationCircleIcon } from '@heroicons/react/20/solid'
-
-import { Fragment } from 'react'
-import { Menu, Transition } from '@headlessui/react'
 
 export default function ClassList(){
     return(
@@ -33,7 +29,7 @@ export default function ClassList(){
                         </div>
                     </div>
                     <div className='overflow-auto h-200'>
-                        <div className="bg-gray-50 px-12 py-2 sm:grid sm:grid-cols-4 sm:gap-1 sm:px-1">
+                        <div className="bg-teal bg-opacity-25 px-12 py-2 sm:grid sm:grid-cols-4 sm:gap-1 sm:px-1">
                             <dt className="text-small font-small text-black-500">History 101</dt>
                             
                             <dt className="text-small font-small text-black-500">Fall 2023</dt>
@@ -57,7 +53,7 @@ export default function ClassList(){
                                 <dt className='align-left'>Full</dt>
                             </dt>
                         </div>
-                        <div className="bg-gray-50 px-12 py-2 sm:grid sm:grid-cols-4 sm:gap-1 sm:px-1">
+                        <div className="bg-teal bg-opacity-25 px-12 py-2 sm:grid sm:grid-cols-4 sm:gap-1 sm:px-1">
                             <dt className="text-small font-small text-black-500">Computer Science 101</dt>
                             
                             <dt className="text-small font-small text-black-500">Fall 2023</dt>
