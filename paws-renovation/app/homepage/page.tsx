@@ -1,23 +1,62 @@
+import Link from "next/link";
 import Footer from "../components/footer";
 import Navbar from "../components/navbar";
-import { LockClosedIcon, ListBulletIcon } from "@heroicons/react/20/solid";
+import {
+  LockClosedIcon,
+  ListBulletIcon,
+  UserIcon,
+} from "@heroicons/react/20/solid";
+import { PrismaClient } from "@prisma/client";
 
-const features = [
-  {
-    name: "Holds",
-    description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.",
-    icon: LockClosedIcon,
-  },
-  {
-    name: "To Dos",
-    description:
-      "Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.",
-    icon: ListBulletIcon,
-  },
-];
+const prisma = new PrismaClient();
 
-export default function HomePage() {
+const fetchUser = async () => {
+  const user = await prisma.user.findUnique({
+    where: {
+      id: 1,
+    },
+  });
+
+  return user;
+};
+
+const fetchAdvisor = async (advisorId: number) => {
+  const advisor = await prisma.advisor.findUnique({
+    where: {
+      id: advisorId,
+    },
+  });
+
+  return advisor;
+};
+
+const fetchTodos = async (userId: number) => {
+  const todos = await prisma.toDo.findMany({
+    where: {
+      user_id: userId,
+    },
+  });
+
+  return todos;
+};
+
+const fetchHolds = async (userId: number) => {
+  const holds = await prisma.hold.findMany({
+    where: {
+      user_id: userId,
+    },
+  });
+
+  return holds;
+};
+
+export default async function HomePage() {
+  const user = await fetchUser();
+  const advisor = await fetchAdvisor(user?.advisor_id ? user.advisor_id : 1);
+  const holds = await fetchHolds(user?.id ? user.id : 1);
+  const todos = await fetchTodos(user?.id ? user.id : 1);
+  
+
   return (
     <>
       <Navbar />
@@ -46,18 +85,41 @@ export default function HomePage() {
                   academic journey, and stay on top of your goals with ease.
                 </p>
                 <dl className="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
-                  {features.map((feature) => (
-                    <div key={feature.name} className="relative pl-9">
-                      <dt className="inline font-semibold text-gray-900">
-                        <feature.icon
-                          className="absolute left-1 top-1 h-5 w-5 text-yellow-500"
-                          aria-hidden="true"
-                        />
-                        {feature.name}
-                      </dt>{" "}
-                      <dd className="inline">{feature.description}</dd>
-                    </div>
-                  ))}
+                  <div key="Holds" className="relative pl-9">
+                    <dt className="inline font-semibold text-gray-900">
+                      <LockClosedIcon
+                        className="absolute left-1 top-1 h-5 w-5 text-yellow-500"
+                        aria-hidden="true"
+                      />
+                      Holds
+                    </dt>{" "}
+                    <dd className="inline">{holds.length == 0 ? "You currently do not have any To Dos!" : holds.map(hold => hold.description).join(", ")}</dd>
+                  </div>
+                  <div key="Todos" className="relative pl-9">
+                    <dt className="inline font-semibold text-gray-900">
+                      <ListBulletIcon
+                        className="absolute left-1 top-1 h-5 w-5 text-yellow-500"
+                        aria-hidden="true"
+                      />
+                      To Dos
+                    </dt>{" "}
+                    <dd className="inline">{todos.length == 0 ? "You currently do not have any To Dos!" : todos.map(todo => todo.description).join(", ")}</dd>
+                  </div>
+                  <div key="Advisor" className="relative pl-9">
+                    <dt className="inline font-semibold text-gray-900">
+                      <UserIcon
+                        className="absolute left-1 top-1 h-5 w-5 text-yellow-500"
+                        aria-hidden="true"
+                      />
+                      Advisor
+                    </dt>{" "}
+                    <Link
+                      href="/advisor"
+                      className="text-xs text-yellow-600 italic hover:underline hover:text-yellow-700 font-medium"
+                    >
+                      {advisor?.first_name + " " + advisor?.last_name}{" "}
+                    </Link>
+                  </div>
                 </dl>
               </div>
             </div>
