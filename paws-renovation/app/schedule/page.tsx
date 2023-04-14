@@ -1,5 +1,6 @@
 import { PencilIcon } from '@heroicons/react/20/solid'
-
+import Footer from "../components/footer";
+import Navbar from "../components/navbar";
 
 
 
@@ -7,19 +8,27 @@ import { PencilIcon } from '@heroicons/react/20/solid'
 export default function Schedule(){
     return(
 
+      <>   <Navbar />
+        
       
-    // NAVBAR
+   
+     
+      
+
+      
+    
     <div className="overflow-hidden bg-white min-h-screen shadow sm:rounded-lg">
       <div className="px-4 py-5 sm:px-6">
         <h3 className="text-base font-semibold leading-6 text-gray-900">Schedule</h3>
         <p className="mt-1 max-w-2xl text-sm text-gray-500">Weekly Schedule</p>
-
+        <div className="flex items-center h-screen w-full justify-center">
         <img className="center" src="https://www.smartsheet.com/sites/default/files/styles/900px/public/IC-Sun-Sat-Weekly-Schedule-8-6pm-Template_WORD.webp?itok=s5KmH_j7" alt="Your Company"></img>
+      </div>
       </div>
       <div className="border-t border-gray-200">
         <dl>
           
-          
+          <br></br>
           
           <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
           <h3 className="text-base font-semibold leading-6 text-gray-900">Class List:</h3>
@@ -50,62 +59,26 @@ export default function Schedule(){
             <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">F 12:00 p.m. - 1:15 p.m.</dd>
           </div>
 
-          
-          <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 flex flex-col items-center justify-center">
-            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-              <ul role="list" className="divide-y divide-gray-200 rounded-md border border-gray-200">
-                <li className="flex items-center justify-between py-3 pl-3 pr-4 text-sm">
-                  <button className="flex w-0 flex-1 items-center">
-                    <PencilIcon className="h-5 w-5 flex-shrink-0 text-black-400" aria-hidden="true" />
-                    <span className="ml-2 w-0 flex-1 truncate">Edit Classes</span>
-                  </button>
-
-                  
-                  
-                </li>
-              </ul>
-            </dd>
-                
-            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-              <ul role="list" className="divide-y divide-gray-200 rounded-md border border-gray-200">
-                <li className="flex items-center justify-between py-3 pl-3 pr-4 text-sm">
-
-
-            <br></br>
-           
-            <button className="flex w-0 flex-1 items-center">
-                    <PencilIcon className="h-5 w-5 flex-shrink-0 text-black-400" aria-hidden="true" />
-                    <span className="ml-2 w-0 flex-1 truncate">Add Class</span>
-                  </button>
-
-                  </li>
-              </ul>
-            </dd>
-
-
-            <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-              <ul role="list" className="divide-y divide-gray-200 rounded-md border border-gray-200">
-                <li className="flex items-center justify-between py-3 pl-3 pr-4 text-sm">
-
-
-            <br></br>
-           
-            <button className="flex w-0 flex-1 items-center">
-                    <PencilIcon className="h-5 w-5 flex-shrink-0 text-black-400" aria-hidden="true" />
-                    <span className="ml-2 w-0 flex-1 truncate">Drop Class</span>
-                  </button>
-
-                  </li>
-              </ul>
-            </dd>
-
-            
-            
-          </div>
-          
+          <div className="sideSpace">
          
+                <button className="button-3" role="button">Edit Classes</button> 
+          
+            <button className="button-3" role="button">Add Class</button>
+            
+            <button className="button-3" role="button">Drop Class</button>
+
+             </div>
+
+
+          
+            
+          
         </dl>
       </div>
     </div>
+  
+    <Footer />  </>
+
     )
+
 }
