@@ -33,6 +33,18 @@ interface User {
   id: number;
   email: string;
   password: string;
+  firstName: string,
+  lastName: string,
+  image: string,
+  address: string,
+  phone: string,
+  major: string,
+  minor: string,
+  country: string,
+  city: string,
+  state: string,
+  zip: number,
+  isCommuting: boolean
 }
 
 interface State {

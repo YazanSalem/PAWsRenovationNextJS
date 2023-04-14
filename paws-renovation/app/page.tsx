@@ -1,24 +1,26 @@
 "use client";
 
-import { useContext, useState } from "react";
+import { FormEvent, useContext, useState } from "react";
 import LoginPageForm from "./loginComponents/LoginPageForm";
 import useAuth from "../hooks/useAuth";
 import { AuthenticationContext } from "./context/AuthContext";
 import { Alert, CircularProgress } from "@mui/material";
-//import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export default function LoginForm() {
+  
+  const router = useRouter();
   const { signin } = useAuth();
   const { error, loading, data} = useContext(
     AuthenticationContext
   );
 
-  //const router = useRouter();
   const handleSuccess = () => {
-    console.log("hello")
+    router.push('/homepage')
   };
 
-  const handleClick = () => {
+  const handleClick = (e: FormEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     signin({ email: inputs.email, password: inputs.password }, handleSuccess);
   };
 

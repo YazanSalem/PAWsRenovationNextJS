@@ -1,5 +1,5 @@
-
 import { LockClosedIcon } from '@heroicons/react/20/solid'
+import { FormEvent } from 'react';
 
 interface Props {
   inputs : {
@@ -8,7 +8,7 @@ interface Props {
   };
 
   handleChangeInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  handleClick: () => void;
+  handleClick: (e:FormEvent<HTMLButtonElement>) => void;
 }
 
 
@@ -76,7 +76,7 @@ export default function LoginPageForm({inputs, handleChangeInput, handleClick} :
             <button
               type="submit"
               className="group relative flex w-full justify-center rounded-md bg-yellow-600 px-3 py-2 text-sm font-semibold text-white hover:bg-yellow-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-600"
-              onSubmit={handleClick}
+              onClick={handleClick}
             >
               <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                 <LockClosedIcon className="h-5 w-5 text-yellow-500 group-hover:text-yellow-400" aria-hidden="true" />
