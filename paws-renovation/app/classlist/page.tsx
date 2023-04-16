@@ -6,7 +6,7 @@ export default function ClassList(){
     return(
         <>
         <Navbar/>
-        <div className="overflow-hidden bg-white min-h-screen shadow sm:rounded-lg">
+        <div className="overflow-hidden bg-white min-h-screen shadow sm:rounded-lg ">
             <div className="bg-white py-4 my-5 px-4 sm:grid sm:grid-cols-4">
                 <dt></dt>
                 <dt>
@@ -16,7 +16,7 @@ export default function ClassList(){
                     <input className='w-100' type="text" placeholder="Search.."></input>
                 </dt>
             </div>
-            <div className="border-2 mx-4 border-gray-200">
+            <div className="border-2 mx-4 border-gray-200 text-gray-900">
                     <div className="border-b-4 border-thick border-black-100">
                         <div className="bg-gray-50 px-12 py-0 sm:grid sm:grid-cols-4 sm:gap-1 sm:px-1">
                             <dt className="text-medium font-medium text-black-500">Course Name</dt>

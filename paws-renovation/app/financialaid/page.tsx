@@ -5,7 +5,7 @@ export default function FinancialAid(){
     return(
         <>
         <Navbar/>
-        <div className=" px-4 overflow-hidden bg-white min-h-screen shadow sm:rounded-lg">
+        <div className=" px-4 overflow-hidden bg-white min-h-screen shadow sm:rounded-lg text-gray-900">
             <div className="px-3 py-5 sm:px-6">
                 <h3 className="text-base font-semibold leading-6 text-gray-900">2023 Financial Aid Year Summary</h3>
             </div>
