@@ -2,33 +2,6 @@
 
 import React, { useState, createContext } from "react";
 
-// id  Int @id @default(autoincrement())
-//   //can include type later if we get to admin/instructor roles for now everybodys a student until we catch up
-//   first_name String
-//   last_name String
-//   image   String
-//   address String
-//   phone String  @unique//string phone numbers can reach integer.max
-//   email String  @unique
-//   major String
-//   minor String?
-//   country String
-//   city  String
-//   state String
-//   zip Int
-//   password  String  @db.Text
-//   is_commuting Boolean
-
-//   ToDos ToDo[]
-//   Holds Hold[]
-//   Courses Course[]
-//   FinancialAid  FinancialAid[]
-
-//   advisor_id Int
-//   advisor Advisor @relation(fields: [advisor_id], references: [id])
-
-//   createdAt DateTime  @default(now())
-//   updatedAt DateTime  @updatedAt
 interface User {
   id: number;
   email: string;
@@ -44,7 +17,8 @@ interface User {
   city: string,
   state: string,
   zip: number,
-  isCommuting: boolean
+  isCommuting: boolean,
+  advisorId: number
 }
 
 interface State {

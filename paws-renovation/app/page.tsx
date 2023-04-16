@@ -16,7 +16,9 @@ export default function LoginForm() {
   );
 
   const handleSuccess = () => {
-    router.push('/homepage')
+    // console.log(data?.id);
+    // console.log(data?.advisorId);
+    router.push(`/homepage/${data?.id}/${data?.advisorId}`)
   };
 
   const handleClick = (e: FormEvent<HTMLButtonElement>) => {

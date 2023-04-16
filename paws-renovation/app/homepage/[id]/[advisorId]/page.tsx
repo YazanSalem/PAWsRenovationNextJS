@@ -1,62 +1,20 @@
+
+import Footer from "../../../components/footer";
+import Navbar from "../../../components/navbar";
 import Link from "next/link";
-import Footer from "../components/footer";
-import Navbar from "../components/navbar";
 import {
   LockClosedIcon,
   ListBulletIcon,
   UserIcon,
 } from "@heroicons/react/20/solid";
-import { PrismaClient } from "@prisma/client";
+import { fetchAdvisor, fetchHolds, fetchTodos } from "../../../../functions/fetchData";
 
-const prisma = new PrismaClient();
 
-const fetchUser = async () => {
-  const user = await prisma.user.findUnique({
-    where: {
-      id: 1,
-    },
-  });
+export default async function HomePage({params} : {params : {id : number, advisorId : number}}) {
 
-  return user;
-};
-
-const fetchAdvisor = async (advisorId: number) => {
-  const advisor = await prisma.advisor.findUnique({
-    where: {
-      id: advisorId,
-    },
-  });
-
-  return advisor;
-};
-
-const fetchTodos = async (userId: number) => {
-  const todos = await prisma.toDo.findMany({
-    where: {
-      user_id: userId,
-    },
-  });
-
-  return todos;
-};
-
-const fetchHolds = async (userId: number) => {
-  const holds = await prisma.hold.findMany({
-    where: {
-      user_id: userId,
-    },
-  });
-
-  return holds;
-};
-
-export default async function HomePage() {
-  const user = await fetchUser();
-  const advisor = await fetchAdvisor(user?.advisor_id ? user.advisor_id : 1);
-  const holds = await fetchHolds(user?.id ? user.id : 1);
-  const todos = await fetchTodos(user?.id ? user.id : 1);
-  
-
+    const advisor = await fetchAdvisor(params.advisorId);
+    const holds = await fetchHolds(params.id);
+    const todos = await fetchTodos(params.id);
   return (
     <>
       <Navbar />

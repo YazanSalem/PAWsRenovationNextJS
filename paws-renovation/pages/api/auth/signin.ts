@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import validator from "validator"
 import { PrismaClient } from "@prisma/client";
+import * as jose from "jose";
 
 const prisma = new PrismaClient();
 
@@ -50,7 +51,15 @@ export default async function handler(
             return res.status(401).json({errorMessage: "Email or password is invalid"});
         }
 
+        const alg = "HS256"
 
+        const secret = new TextEncoder().encode(process.env.JWT_SECRET);
+
+        const token = await new jose.SignJWT({email: userWithEmail.email})
+        .setProtectedHeader({alg})
+        .setExpirationTime("24h")
+        .sign(secret);
+        
         return res.status(200).json({
             id: userWithEmail.id,
             firstName: userWithEmail.first_name,
@@ -66,7 +75,8 @@ export default async function handler(
             state: userWithEmail.state,
             zip: userWithEmail.zip,
             password: userWithEmail.password,
-            isCommuting: userWithEmail.is_commuting
+            isCommuting: userWithEmail.is_commuting,
+            advisorId: userWithEmail.advisor_id
         });
     }
 
