@@ -28,7 +28,8 @@ const Calendar = () => {
       nowIndicator={true}
       slotMinTime={"08:00"}
       slotMaxTime={"20:00"}
-      height={750}
+      height={700}
+      allDaySlot={false}
     />
   );
 };
