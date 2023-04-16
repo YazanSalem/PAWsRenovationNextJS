@@ -26,7 +26,7 @@ const useAuth = () => {
                 loading: false
             });
 
-            console.log(response.data);
+            console.log(data);
             handleSuccess();
         } catch (error: any) {
             
