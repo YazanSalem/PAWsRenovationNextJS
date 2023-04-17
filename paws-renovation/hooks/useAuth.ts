@@ -7,7 +7,7 @@ const useAuth = () => {
 
     const {data, error, loading, setAuthState} = useContext(AuthenticationContext)
 
-    const signin = async ({email, password}: {email: string; password: string}, handleSuccess: () => void) => {
+    const signin = async ({email, password}: {email: string; password: string}, handleSuccess: (id: number) => void) => {
         setAuthState({
             data: null,
             error:null,
@@ -26,8 +26,14 @@ const useAuth = () => {
                 loading: false
             });
 
+            // setTimeout(() => {
             console.log(data);
-            handleSuccess();
+            if(data){
+                handleSuccess(data.id);
+            }
+            // }, 5000);
+           //console.log(data);
+           // handleSuccess();
         } catch (error: any) {
             
             console.log("Hello");

@@ -77,7 +77,7 @@ export default function Financials(){
                             
                         </dt>{" "}
                         
-                        <a href={feature.href} class="font-medium text-blue-600 dark:text-blue-500 hover:underline">{feature.name}</a>
+                        <a href={feature.href} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">{feature.name}</a>
                         
                         </div>
                      ))}

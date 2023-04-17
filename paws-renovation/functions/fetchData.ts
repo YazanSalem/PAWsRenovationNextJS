@@ -2,6 +2,18 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
+export const fetchUserAdvisorId = async (userId: number) => {
+  const user = await prisma.user.findUnique({
+    where: {
+      id: userId,
+    },select: {
+      advisor_id: true,
+    }
+  });
+
+  return user;
+};
+
 export const fetchAdvisor = async (advisorId: number) => {
     const advisor = await prisma.advisor.findUnique({
       where: {

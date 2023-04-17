@@ -11,14 +11,15 @@ export default function LoginForm() {
   
   const router = useRouter();
   const { signin } = useAuth();
-  const { error, loading, data} = useContext(
+  const { error, loading} = useContext(
     AuthenticationContext
   );
 
-  const handleSuccess = () => {
+  const handleSuccess = (id : number) => {
     // console.log(data?.id);
     // console.log(data?.advisorId);
-    router.push(`/homepage/${data?.id}/${data?.advisorId}`)
+    console.log(id);
+    router.push(`/homepage/${id}`)
   };
 
   const handleClick = (e: FormEvent<HTMLButtonElement>) => {
