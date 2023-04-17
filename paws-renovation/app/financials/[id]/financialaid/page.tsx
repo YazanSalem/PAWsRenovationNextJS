@@ -1,5 +1,5 @@
-import Footer from "../components/footer";
-import Navbar from "../components/navbar";
+import Footer from "../../../components/footer";
+import Navbar from "../../../components/navbar";
 import { BellIcon } from "@heroicons/react/20/solid";
 
 const navigation = [
@@ -77,7 +77,7 @@ export default function Financials(){
                             
                         </dt>{" "}
                         
-                        <a href={feature.href} class="font-medium text-blue-600 dark:text-blue-500 hover:underline">{feature.name}</a>
+                        <a href={feature.href} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">{feature.name}</a>
                         
                         </div>
                      ))}

@@ -1,7 +1,7 @@
 "use client";
 
 import { FormEvent, useContext, useState } from "react";
-import LoginPageForm from "./loginComponents/LoginPageForm";
+import LoginPageForm from "./components/loginComponents/LoginPageForm";
 import useAuth from "../hooks/useAuth";
 import { AuthenticationContext } from "./context/AuthContext";
 import { Alert, CircularProgress } from "@mui/material";
@@ -11,12 +11,12 @@ export default function LoginForm() {
   
   const router = useRouter();
   const { signin } = useAuth();
-  const { error, loading, data} = useContext(
+  const { error, loading} = useContext(
     AuthenticationContext
   );
 
-  const handleSuccess = () => {
-    router.push('/homepage')
+  const handleSuccess = (id : number) => {
+    router.push(`/homepage/${id}`)
   };
 
   const handleClick = (e: FormEvent<HTMLButtonElement>) => {
