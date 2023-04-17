@@ -1,8 +1,8 @@
-import Footer from "../components/footer";
-import Navbar from "../components/navbar";
+import Footer from "../../components/footer";
+import Navbar from "../../components/navbar";
 import ChangePasswordModal from "./components/ChangePasswordModal";
 
-export default function Settings() {
+export default function Settings({ params }: { params: {id: string}}) {
   return (
     <>
       <Navbar />

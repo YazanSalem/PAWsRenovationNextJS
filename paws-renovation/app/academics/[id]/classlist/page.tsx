@@ -1,5 +1,5 @@
-import Footer from '../components/footer'
-import Navbar from "../components/navbar"
+import Footer from '../../../components/footer'
+import Navbar from "../../../components/navbar"
 import { CheckCircleIcon,StopCircleIcon,ExclamationCircleIcon } from '@heroicons/react/20/solid'
 
 export default function ClassList(){

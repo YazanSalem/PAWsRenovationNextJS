@@ -1,11 +1,11 @@
 import { PencilIcon } from '@heroicons/react/20/solid'
-import Footer from "../components/footer";
-import Navbar from "../components/navbar";
+import Footer from "../../components/footer";
+import Navbar from "../../components/navbar";
 
 
 
 
-export default function Schedule(){
+export default function Schedule({ params }: { params: {id: string}}){
     return(
 
       <>   <Navbar />

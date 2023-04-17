@@ -26,17 +26,12 @@ const useAuth = () => {
                 loading: false
             });
 
-            // setTimeout(() => {
-            console.log(data);
             if(data){
                 handleSuccess(data.id);
             }
-            // }, 5000);
-           //console.log(data);
-           // handleSuccess();
+
         } catch (error: any) {
             
-            console.log("Hello");
             setAuthState({
                 data: null,
                 error: error.response.data.errorMessage,
@@ -55,9 +50,10 @@ const useAuth = () => {
             loading: false
         })
     }
+
     return {
         signin,
-        logout
+        logout,
     }
 }
 

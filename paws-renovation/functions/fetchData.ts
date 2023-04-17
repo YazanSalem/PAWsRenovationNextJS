@@ -7,6 +7,7 @@ export const fetchUserAdvisorId = async (userId: number) => {
     where: {
       id: userId,
     },select: {
+      id: true,
       advisor_id: true,
     }
   });

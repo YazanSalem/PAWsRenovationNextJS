@@ -6,10 +6,10 @@ import { AuthenticationContext } from "../context/AuthContext";
 import useAuth from "../../hooks/useAuth";
 
 const navigation = [
-  { name: "Home", href: "/homepage", current: true },
-  { name: "Academics", href: "/academics", current: false },
-  { name: "Financials", href: "/financials", current: false },
-  { name: "Schedule", href: "/schedule", current: false },
+  { name: "Home", href: "/homepage/", current: true },
+  { name: "Academics", href: "/academics/", current: false },
+  { name: "Financials", href: "/financials/", current: false },
+  { name: "Schedule", href: "/schedule/", current: false },
 ];
 
 function handleNavigation(itemName: string){
@@ -28,7 +28,6 @@ function classNames(...classes: string[]) {
 
 export default function Navbar() {
   const {data} = useContext(AuthenticationContext);
-
   const {logout} = useAuth()
   return (
     <Disclosure as="nav" className="bg-yellow-500">
@@ -65,7 +64,7 @@ export default function Navbar() {
                     {navigation.map((item) => (
                       <a
                         key={item.name}
-                        href={item.href}
+                        href={item.href + data?.id}
                         className={classNames(
                           item.current
                             ? "bg-yellow-700 text-white"
@@ -114,7 +113,7 @@ export default function Navbar() {
                       <Menu.Item>
                         {({ active }) => (
                           <a
-                            href="/profile"
+                            href={"/profile/" + data?.id}
                             className={classNames(
                               active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700"
@@ -127,7 +126,7 @@ export default function Navbar() {
                       <Menu.Item>
                         {({ active }) => (
                           <a
-                            href="/settings"
+                            href={"/settings/" + data?.id}
                             className={classNames(
                               active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700"

@@ -16,8 +16,9 @@ import {
 
 export default async function HomePage({ params }: { params: {id: string}}) {
     const id = parseInt(params.id);
-    //const advisor = await fetchAdvisor(params.id);
     const user = await fetchUserAdvisorId(id);
+
+    console.log(user?.id);
     const advisor = await fetchAdvisor(user?.advisor_id ? user.advisor_id : 1);
     const holds = await fetchHolds(id);
     const todos = await fetchTodos(id);
@@ -87,7 +88,7 @@ export default async function HomePage({ params }: { params: {id: string}}) {
                     Advisor
                   </dt>{" "}
                   <Link
-                    href="/advisor"
+                    href={"/advisor/" + params.id}
                     className="text-xs text-yellow-600 italic hover:underline hover:text-yellow-700 font-medium"
                   >
                     {advisor?.first_name + " " + advisor?.last_name}{" "}

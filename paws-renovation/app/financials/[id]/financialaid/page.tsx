@@ -1,5 +1,5 @@
-import Footer from "../components/footer";
-import Navbar from "../components/navbar";
+import Footer from "../../../components/footer";
+import Navbar from "../../../components/navbar";
 import { BellIcon } from "@heroicons/react/20/solid";
 
 const navigation = [

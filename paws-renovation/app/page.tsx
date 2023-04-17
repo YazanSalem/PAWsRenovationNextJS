@@ -1,7 +1,7 @@
 "use client";
 
 import { FormEvent, useContext, useState } from "react";
-import LoginPageForm from "./loginComponents/LoginPageForm";
+import LoginPageForm from "./components/loginComponents/LoginPageForm";
 import useAuth from "../hooks/useAuth";
 import { AuthenticationContext } from "./context/AuthContext";
 import { Alert, CircularProgress } from "@mui/material";
@@ -16,9 +16,6 @@ export default function LoginForm() {
   );
 
   const handleSuccess = (id : number) => {
-    // console.log(data?.id);
-    // console.log(data?.advisorId);
-    console.log(id);
     router.push(`/homepage/${id}`)
   };
 

@@ -1,6 +1,6 @@
 import { UserCircleIcon } from "@heroicons/react/24/solid";
-import { majors } from "../../../staticData/majors";
-import { minors } from "../../../staticData/minors";
+import { majors } from "../../../../staticData/majors";
+import { minors } from "../../../../staticData/minors";
 
 const majorOptions = majors.map((major) =>(
     <option key ={major} value={major}>
