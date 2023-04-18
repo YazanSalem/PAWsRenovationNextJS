@@ -18,7 +18,7 @@ export default function ClassList(){
             </div>
             <div className="border-2 mx-4 border-gray-200">
                     <div className="border-b-4 border-thick border-black-100">
-                        <div className="bg-gray-50 px-12 py-0 sm:grid sm:grid-cols-4 sm:gap-1 sm:px-1">
+                        <div className="bg-gray-50 px-12 py-0 sm:grid sm:grid-cols-6 sm:gap-1 sm:px-1">
                             <dt className="text-medium font-medium text-black-500">Course Name</dt>
                             
                             <dt className="text-medium font-medium text-black-500">Term</dt>
@@ -26,10 +26,14 @@ export default function ClassList(){
                             <dt className="text-medium font-medium text-black-500">Professor</dt>
                             
                             <dt className="text-medium font-medium text-black-500">Availabilty</dt>
+                            
+                            <dt className="text-medium font-medium text-black-500">Start Date</dt>
+                            
+                            <dt className="text-medium font-medium text-black-500">End Date</dt>
                         </div>
                     </div>
                     <div className='overflow-auto h-200'>
-                        <div className="bg-teal bg-opacity-25 px-12 py-2 sm:grid sm:grid-cols-4 sm:gap-1 sm:px-1">
+                        <div className="bg-teal bg-opacity-25 px-12 py-2 sm:grid sm:grid-cols-6 sm:gap-1 sm:px-1">
                             <dt className="text-small font-small text-black-500">History 101</dt>
                             
                             <dt className="text-small font-small text-black-500">Fall 2023</dt>
@@ -40,8 +44,12 @@ export default function ClassList(){
                                 <dt><CheckCircleIcon className="h-5 w-5 border-green-10 flex-shrink-0 text-black-400 fill-green" aria-hidden="true"></CheckCircleIcon></dt>
                                 <dt className='align-left'>Available</dt>
                             </dt>
+                            
+                            <dt className="text-medium font-medium text-black-500">1.1.2023</dt>
+                            
+                            <dt className="text-medium font-medium text-black-500">5.1.2023</dt>
                         </div>
-                        <div className="bg-gray-50 px-12 py-2 sm:grid sm:grid-cols-4 sm:gap-1 sm:px-1">
+                        <div className="bg-gray-50 px-12 py-2 sm:grid sm:grid-cols-6 sm:gap-1 sm:px-1">
                             <dt className="text-small font-small text-black-500">English 101</dt>
                             
                             <dt className="text-small font-small text-black-500">Fall 2023</dt>
@@ -52,8 +60,12 @@ export default function ClassList(){
                                 <dt><StopCircleIcon className="h-5 w-5 border-green-10 flex-shrink-0 text-black-400 fill-green" aria-hidden="true"></StopCircleIcon></dt>
                                 <dt className='align-left'>Full</dt>
                             </dt>
+                            
+                            <dt className="text-medium font-medium text-black-500">1.1.2023</dt>
+                            
+                            <dt className="text-medium font-medium text-black-500">5.1.2023</dt>
                         </div>
-                        <div className="bg-teal bg-opacity-25 px-12 py-2 sm:grid sm:grid-cols-4 sm:gap-1 sm:px-1">
+                        <div className="bg-teal bg-opacity-25 px-12 py-2 sm:grid sm:grid-cols-6 sm:gap-1 sm:px-1">
                             <dt className="text-small font-small text-black-500">Computer Science 101</dt>
                             
                             <dt className="text-small font-small text-black-500">Fall 2023</dt>
@@ -64,6 +76,10 @@ export default function ClassList(){
                                 <dt><ExclamationCircleIcon className="h-5 w-5 border-green-10 flex-shrink-0 text-black-400 fill-green" aria-hidden="true"></ExclamationCircleIcon></dt>
                                 <dt className='align-left'>Waitlist</dt>
                             </dt>
+                            
+                            <dt className="text-medium font-medium text-black-500">1.1.2023</dt>
+                            
+                            <dt className="text-medium font-medium text-black-500">5.1.2023</dt>
                         </div>
                     </div>         
             </div>
