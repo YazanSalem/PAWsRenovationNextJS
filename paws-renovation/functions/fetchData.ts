@@ -15,6 +15,25 @@ export const fetchUserAdvisorId = async (userId: number) => {
   return user;
 };
 
+export const fetchProfileCard = async (userId: number) => {
+  const user = await prisma.user.findUnique({
+    where: {
+      id: userId,
+    }, select: {
+      first_name: true,
+      last_name: true,
+      image: true,
+      major: true,
+      minor: true,
+      address: true,
+      phone: true,
+      email: true
+    }
+  });
+
+  return user;
+};
+
 export const fetchAdvisor = async (advisorId: number) => {
     const advisor = await prisma.advisor.findUnique({
       where: {

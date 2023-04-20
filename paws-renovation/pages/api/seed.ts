@@ -11,11 +11,16 @@ export default async function handler(
     res: NextApiResponse<Data>
   ) {
 
+
+    await prisma.hold.deleteMany();
+    await prisma.toDo.deleteMany();
+    await prisma.user.deleteMany();
+    await prisma.table.deleteMany();
+    await prisma.booking.deleteMany();
     await prisma.advisor.deleteMany();
     await prisma.course.deleteMany();
     await prisma.financialAid.deleteMany();
-    await prisma.hold.deleteMany();
-    await prisma.user.deleteMany();
+
     
     await prisma.advisor.createMany({
         data:[
@@ -27,7 +32,9 @@ export default async function handler(
                 email: "jlo@uwm.edu",
                 phone: "(414)673-8792",
                 building: "Engineering",
-                office: "E384"
+                office: "E384",
+                start_time: "14:30:00.000Z",
+                end_time: "21:30:00.000Z"
             },
             {
                 first_name: "Bob",
@@ -37,7 +44,9 @@ export default async function handler(
                 email: "bobmyer@uwm.edu",
                 phone: "(414)399-0909",
                 building: "Nursing",
-                office: "N388"
+                office: "N388",
+                start_time: "10:00:00.000Z",
+                end_time: "21:00:00.000Z",
             },
             {
                 first_name: "Edwardo",
@@ -47,7 +56,9 @@ export default async function handler(
                 email: "edwsha@uwm.edu",
                 phone: "(262)819-0876",
                 building: "Lubar",
-                office: "L281"
+                office: "L281",
+                start_time: "17:30:00.000Z",
+                end_time: "22:00:00.000Z",
             },
         ],
     });
@@ -208,6 +219,23 @@ export default async function handler(
             },
         ],
     });
+
+    await prisma.table.createMany({
+        data: [
+            {
+                advisor_id: edwardoShavezId,
+                seats: 1
+            },
+            {
+                advisor_id: bobMyerId,
+                seats: 1
+            },
+            {
+                advisor_id: jenniferLopezId,
+                seats: 1
+            },
+        ]
+    })
 
     res.status(200).json({ name: "hello" });
 }
