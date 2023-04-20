@@ -20,6 +20,7 @@ export const fetchProfileCard = async (userId: number) => {
     where: {
       id: userId,
     }, select: {
+      id: true,
       first_name: true,
       last_name: true,
       image: true,

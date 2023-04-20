@@ -135,8 +135,8 @@ model Booking{
   booker_first_name String
   booker_last_name String
   booker_location String
-  booker_description String
-  booker_request String
+  booker_description String?
+  booker_request String?
   booking_num_of_people Int
 
   advisor_id Int

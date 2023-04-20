@@ -9,10 +9,12 @@ import Link from "next/link";
 import { getTimeString } from "../../../../functions/convertToDisplayTime";
 
 export default function AppointmentForm({
+  userId,
   startTime,
   endTime,
   advisorId,
 }: {
+  userId: string;
   startTime: string;
   endTime: string;
   advisorId: number;
@@ -68,7 +70,7 @@ export default function AppointmentForm({
   return (
     <>
       <div className="m-auto">
-        <div className="flex justify-between">
+        <div className="flex justify-between mb-6">
           <div className="flex flex-col w-[48%]">
             <label htmlFor="">Date</label>
             <DatePicker
@@ -94,7 +96,7 @@ export default function AppointmentForm({
             </select>
           </div>
         </div>
-        <div className="inline-block relative w-64 mb-6 mt-2">
+        {/* <div className="inline-block relative w-64 mb-6 mt-2">
           <label className="ml-1 mb-3">Location</label>
           <select className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
             <option>Online</option>
@@ -122,7 +124,7 @@ export default function AppointmentForm({
           >
             Description of Appointment
           </label>
-        </div>
+        </div> */}
         <button
           className="uppercase bg-yellow-600 w-full text-white p-3 hover:bg-yellow-500 rounded text-sm mb-5"
           onClick={handleClick}
@@ -136,7 +138,7 @@ export default function AppointmentForm({
           <div className="flex flex-wrap mt-2">
             {
               data.map(time => {
-                return  time.available? <Link href={`/reserve/${advisorId}?date=${day}T${time.time}`}
+                return  time.available? <Link href={`/reserve/${userId}/${advisorId}?date=${day}T${time.time}`}
                 className="bg-yellow-500 cursor-pointer p-2 w-24 text-center text-white mb-3 roundedd mr-3">
                   <p className="text-sm font-bold">{getTimeString(time.time)}</p>
                 </Link> : <p className="bg-gray-300 p-2 w-24 mb-3 rounded mr-3"></p>

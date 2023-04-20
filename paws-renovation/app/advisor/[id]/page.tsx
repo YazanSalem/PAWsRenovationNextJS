@@ -78,6 +78,7 @@ export default async function AdvisorPage({ params }: { params: {id: string}}) {
               </table>
   
               <ScheduleAppointmentModal
+                userId={params.id}
                 advisorId={advisorId.advisor_id}
                 startTime = {advisor.start_time}
                 endTime = {advisor.end_time}

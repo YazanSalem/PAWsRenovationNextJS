@@ -18,10 +18,12 @@ const style = {
 };
 
 export default function ScheduleAppointmentModal({
+  userId,
   advisorId,
   startTime,
   endTime,
 }: {
+  userId: string;
   advisorId: number;
   startTime: string;
   endTime: string;
@@ -52,6 +54,7 @@ export default function ScheduleAppointmentModal({
               <p className="text-sm">Book an Appointment</p>
             </div>
               <AppointmentForm
+                userId={userId}
                 advisorId={advisorId}
                 startTime={startTime}
                 endTime={endTime}
