@@ -1,5 +1,5 @@
 import Link from "next/link"
-export default function ProfileCard() {
+export default function ProfileCard(id : number) {
   return (
     <div className="flex items-center h-screen w-full justify-center">
       <div className="max-w-xs">

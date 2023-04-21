@@ -31,8 +31,9 @@ model User{
 
   ToDos ToDo[]
   Holds Hold[]
-  Courses Course[]
+  Courses UsersAndCourses[]
   FinancialAid  FinancialAid[]
+  Scholarships Scholarship[]
 
   advisor_id Int
   advisor Advisor @relation(fields: [advisor_id], references: [id])
@@ -76,8 +77,12 @@ model Advisor{
   phone String  @unique
   building  String
   office  String
+  start_time String
+  end_time  String
 
   users User[]  
+  bookings Booking[]
+  tables Table[]
 
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt 
@@ -95,8 +100,13 @@ model Course{
   class_section Int
   room  String
   grade String
+  days_of_week String?
+  end_date  String?
+  start_date  String?
+  start_time  String?
+  end_time  String?
 
-  users User[]
+  users UsersAndCourses[]
 
   term  Term
   enrolled_status EnrolledStatus
@@ -120,6 +130,68 @@ model FinancialAid{
 
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt 
+}
+
+
+model Scholarship{
+  id Int @id @default(autoincrement())
+  name String
+  amount Int
+  user_id Int
+  user User @relation(fields:[user_id], references: [id])
+  semester Int
+}
+
+model Booking{
+  id Int @id @default(autoincrement())
+  booking_time DateTime
+  booker_email String
+  booker_phone String
+  booker_first_name String
+  booker_last_name String
+  booker_location String
+  booker_description String?
+  booker_request String?
+  booking_num_of_people Int
+
+  advisor_id Int
+  advisor Advisor @relation(fields: [advisor_id], references: [id])
+
+  tables BookingsOnTables[]
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt 
+}
+
+model Table{
+  id Int @id @default(autoincrement())
+  seats Int
+
+  advisor_id Int
+  advisor Advisor @relation(fields: [advisor_id], references: [id])
+
+  bookings BookingsOnTables[]
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt 
+}
+
+model BookingsOnTables{
+  booking_id Int
+  booking Booking @relation(fields: [booking_id], references: [id])
+
+  table_id Int
+  table Table @relation(fields: [table_id], references: [id])
+
+  @@id([booking_id, table_id])
+}
+
+model UsersAndCourses{
+  user User @relation(fields:[userId],references:[id])
+  userId Int
+  courses Course @relation(fields:[courseId],references:[id])
+  courseId Int
+  @@id([userId,courseId])
 }
 
 enum AidType{
