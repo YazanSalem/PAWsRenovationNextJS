@@ -29,6 +29,11 @@ function classNames(...classes: string[]) {
 export default function Navbar() {
   const {data} = useContext(AuthenticationContext);
   const {logout} = useAuth()
+
+  if(!data){
+    return <></>
+  }
+
   return (
     <Disclosure as="nav" className="bg-yellow-500">
       {({ open }) => (

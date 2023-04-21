@@ -30,11 +30,11 @@ export default async function handler(
       })
     }
 
-    if(bookerLocation !== "IN-PERSON" || bookerLocation !== "ONLINE"){
-      return res.status(400).json({
-        errorMessage: "Please make sure the Location input is IN-PERSON or ONLINE (case sensitive)"
-      })
-    }
+    // if(bookerLocation !== "IN-PERSON" || bookerLocation !== "ONLINE"){
+    //   return res.status(400).json({
+    //     errorMessage: "Please make sure the Location input is IN-PERSON or ONLINE (case sensitive)"
+    //   })
+    // }
 
     const advisor = await prisma.advisor.findUnique({
       where: {

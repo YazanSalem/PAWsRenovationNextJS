@@ -10,6 +10,7 @@ export default function useReservation() {
     advisorId,
     day,
     time,
+    partySize,
     bookerLocation,
     bookerDescription,
   }: {
@@ -17,6 +18,7 @@ export default function useReservation() {
     advisorId: number;
     day: string;
     time: string;
+    partySize: number
     bookerLocation: string;
     bookerDescription: string;
   }) => {
@@ -31,6 +33,7 @@ export default function useReservation() {
           params: {
             day,
             time,
+            partySize
           },
         }
       );
@@ -41,8 +44,8 @@ export default function useReservation() {
 
     } catch (error: any) {
       setLoading(false);
-      console.log(advisorId, day, time);
-      console.log(error);
+      console.log(userId, advisorId, day, time);
+      console.log(error.response.data.errorMessage);
       setError(error.response.data.errorMessage);
     }
   };

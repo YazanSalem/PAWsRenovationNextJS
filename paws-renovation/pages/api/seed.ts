@@ -14,6 +14,7 @@ export default async function handler(
 
     await prisma.hold.deleteMany();
     await prisma.toDo.deleteMany();
+    await prisma.scholarship.deleteMany();
     await prisma.user.deleteMany();
     await prisma.table.deleteMany();
     await prisma.booking.deleteMany();

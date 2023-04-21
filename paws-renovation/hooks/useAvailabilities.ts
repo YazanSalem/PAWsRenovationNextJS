@@ -26,13 +26,12 @@ export default function useAvailabilities() {
         `http://localhost:3000/api/advisor/${advisorId}/availability?day=${day}&time=${time}&partySize=${partySize}`
       );
 
-      console.log(advisorId, day, time)
+
       setLoading(false);
       setData(response.data);
     } catch (error: any) {
       setLoading(false);
-      console.log(advisorId, day, time)
-      console.log(error);
+
       setError(error.response.data.errorMessage);
     }
   };

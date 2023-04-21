@@ -53,6 +53,7 @@ export default function ReserveCard({ user, advisor, date }: Props) {
         advisorId: advisor.id,
         day,
         time,
+        partySize: 1,
         bookerLocation: inputs.bookerLocation,
         bookerDescription: inputs.bookerDescription
     }) 

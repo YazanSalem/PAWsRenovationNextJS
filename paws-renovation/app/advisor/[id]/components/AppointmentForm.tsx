@@ -138,7 +138,7 @@ export default function AppointmentForm({
           <div className="flex flex-wrap mt-2">
             {
               data.map(time => {
-                return  time.available? <Link href={`/reserve/${userId}/${advisorId}?date=${day}T${time.time}`}
+                return  time.available? <Link href={`/reserve/${userId}/${advisorId}?date=${day}T${time.time}&partySize=1`}
                 className="bg-yellow-500 cursor-pointer p-2 w-24 text-center text-white mb-3 roundedd mr-3">
                   <p className="text-sm font-bold">{getTimeString(time.time)}</p>
                 </Link> : <p className="bg-gray-300 p-2 w-24 mb-3 rounded mr-3"></p>
