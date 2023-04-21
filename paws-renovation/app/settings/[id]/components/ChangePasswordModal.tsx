@@ -48,7 +48,7 @@ export default function ChangePasswordModal() {
                 </div>
                 <div className="m-auto">
                     <PasswordForm/>
-                    <button className="ippercase bg-red-600 w-full text-white p-3 rounded text-sm mb-5 disabled:bg-gray-400">
+                    <button className="uppercase bg-red-600 w-full text-white p-3 rounded text-sm mb-5  hover:bg-red-500">
                         Change Password
                     </button>
                 </div>
