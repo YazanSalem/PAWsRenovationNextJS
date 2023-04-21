@@ -1,5 +1,4 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { times } from "../../../../app/staticData/times";
 import { PrismaClient } from "@prisma/client";
 import moment from "moment";
 import { findAvailableTables } from "../../../../services/advisor/findAvailableTables";

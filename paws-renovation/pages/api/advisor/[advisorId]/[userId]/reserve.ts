@@ -1,8 +1,8 @@
 import { PrismaClient } from "@prisma/client";
 import moment from "moment";
 import { NextApiRequest, NextApiResponse } from "next";
-import { findAvailableTables } from "../../../../services/advisor/findAvailableTables";
-import { fetchProfileCard } from "../../../../functions/fetchData";
+import { findAvailableTables } from "../../../../../services/advisor/findAvailableTables";
+import { fetchProfileCard } from "../../../../../functions/fetchData";
 
 const prisma = new PrismaClient();
 
@@ -11,7 +11,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method === "POST") {
-    const {userId, advisorId, day, time, partySize } = req.query as {
+    const {advisorId, userId, day, time, partySize } = req.query as {
       userId: string;
       advisorId: string;
       day: string;

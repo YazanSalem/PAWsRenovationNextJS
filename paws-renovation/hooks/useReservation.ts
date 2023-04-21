@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import axios from "axios";
 
 export default function useReservation() {
@@ -13,6 +13,7 @@ export default function useReservation() {
     partySize,
     bookerLocation,
     bookerDescription,
+    setDidBook
   }: {
     userId: number;
     advisorId: number;
@@ -21,13 +22,13 @@ export default function useReservation() {
     partySize: number
     bookerLocation: string;
     bookerDescription: string;
+    setDidBook: Dispatch<SetStateAction<boolean>>
   }) => {
     setLoading(true);
 
     try {
       const response = await axios.post(
-        // http://localhost:3000/api/advisor/12/reserve?day=2023-04-24&time=18:00:00.000Z
-        `http://localhost:3000/api/advisor/${userId}/${advisorId}/reserve`,
+        `http://localhost:3000/api/advisor/${advisorId}/${userId}/reserve`,
         { bookerLocation, bookerDescription },
         {
           params: {
@@ -38,8 +39,8 @@ export default function useReservation() {
         }
       );
 
-      console.log(advisorId, day, time);
       setLoading(false);
+      setDidBook(true);
       return response.data;
 
     } catch (error: any) {
