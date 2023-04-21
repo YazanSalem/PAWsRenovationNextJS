@@ -31,7 +31,7 @@ model User{
 
   ToDos ToDo[]
   Holds Hold[]
-  Courses UsersAndCourses[]
+  Course Course[]
   FinancialAid  FinancialAid[]
   Scholarships Scholarship[]
 
@@ -106,7 +106,8 @@ model Course{
   start_time  String?
   end_time  String?
 
-  users UsersAndCourses[]
+  user_id Int
+  user User @relation(fields: [user_id], references: [id])
 
   term  Term
   enrolled_status EnrolledStatus
@@ -186,13 +187,6 @@ model BookingsOnTables{
   @@id([booking_id, table_id])
 }
 
-model UsersAndCourses{
-  user User @relation(fields:[userId],references:[id])
-  userId Int
-  courses Course @relation(fields:[courseId],references:[id])
-  courseId Int
-  @@id([userId,courseId])
-}
 
 enum AidType{
   Scholarship

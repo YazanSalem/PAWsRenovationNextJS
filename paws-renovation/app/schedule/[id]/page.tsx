@@ -7,32 +7,32 @@ import FullCalendar from "@fullcalendar/react";
 import interactionPlugin from "@fullcalendar/interaction";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import { title } from 'process';
-import { PrismaClient } from "@prisma/client";
+// import { PrismaClient } from "@prisma/client";
 
-const prisma = new PrismaClient();
-
-
-export const fetchUserCourses = async (userId: number) => {
-  const user = await prisma.UsersAndCourses.findUnique({
-    where: {
-      usedid: userId,
-    },select: {
-      id: true,
-      courseId: true,
-    }
-  });
-
-  return user;
-};
+// const prisma = new PrismaClient();
 
 
+// export const fetchUserCourses = async (userId: number) => {
+//   const user = await prisma.UsersAndCourses.findUnique({
+//     where: {
+//       usedid: userId,
+//     },select: {
+//       id: true,
+//       courseId: true,
+//     }
+//   });
+
+//   return user;
+// };
 
 
 
 
-export default async function Schedule({ params }: { params: {id: string}}){
+
+
+export default function Schedule({ params }: { params: {id: string}}){
   const id = parseInt(params.id);
-  fetchUserCourses(id)
+  // fetchUserCourses(id)
   const state = {
     calendarWeekends: true,
     calendarEvents: [
