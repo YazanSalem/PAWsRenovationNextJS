@@ -56,7 +56,7 @@ export default function ProfileCard(id : number) {
             </table>
 
             <div className="text-center my-3">
-            <Link href="/profile/edit" className="text-xs text-yellow-600 italic hover:underline hover:text-yellow-700 font-medium">Edit Profile</Link>
+            <Link href= {`/profile/${id}/edit`} className="text-xs text-yellow-600 italic hover:underline hover:text-yellow-700 font-medium">Edit Profile</Link>
             </div>
           </div>
         </div>
