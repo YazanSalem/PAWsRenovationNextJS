@@ -7,33 +7,42 @@ import FullCalendar from "@fullcalendar/react";
 import interactionPlugin from "@fullcalendar/interaction";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import { title } from 'process';
+import { PrismaClient } from "@prisma/client";
 
-const state = {
-  calendarWeekends: true,
-  calendarEvents: [
-    // initial event data
-    { title: "COMPSCI 351", startRecur:'2023-04-17', endRecur:'2023-04-22', daysOfWeek: [ 1,3 ], startTime: '11:00', endTime: '11:30'},
-    { title: "COMPSCI 458", startRecur:'2023-04-17', endRecur:'2023-04-22', daysOfWeek: [ 2,4 ], startTime: '11:30', endTime: '12:20'},
-    { title: "COMPSCI 531", startRecur:'2023-04-17', endRecur:'2023-04-22', daysOfWeek: [ 1,3 ], startTime: '14:00', endTime: '14:50'},
-    { title: "COMPSCI 535", startRecur:'2023-04-17', endRecur:'2023-04-22', daysOfWeek: [ 5 ], startTime: '12:00', endTime: '13:15'}
-  ]
+const prisma = new PrismaClient();
+
+
+export const fetchUserCourses = async (userId: number) => {
+  const user = await prisma.UsersAndCourses.findUnique({
+    where: {
+      usedid: userId,
+    },select: {
+      id: true,
+      courseId: true,
+    }
+  });
+
+  return user;
 };
 
-const Calendar = () => {
-  return (
-    <FullCalendar
-      plugins={[timeGridPlugin, interactionPlugin]}
-      events={state.calendarEvents}
-      nowIndicator={true}
-      slotMinTime={"08:00"}
-      slotMaxTime={"20:00"}
-      height={700}
-      allDaySlot={false}
-    />
-  );
-};
 
-export default function Schedule(){
+
+
+
+
+export default async function Schedule({ params }: { params: {id: string}}){
+  const id = parseInt(params.id);
+  fetchUserCourses(id)
+  const state = {
+    calendarWeekends: true,
+    calendarEvents: [
+      // initial event data
+      { title: "COMPSCI 351", startRecur:'2023-04-17', endRecur:'2023-04-22', daysOfWeek: [ 1,3 ], startTime: '11:00', endTime: '11:30'},
+      { title: "COMPSCI 458", startRecur:'2023-04-17', endRecur:'2023-04-22', daysOfWeek: [ 2,4 ], startTime: '11:30', endTime: '12:20'},
+      { title: "COMPSCI 531", startRecur:'2023-04-17', endRecur:'2023-04-22', daysOfWeek: [ 1,3 ], startTime: '14:00', endTime: '14:50'},
+      { title: "COMPSCI 535", startRecur:'2023-04-17', endRecur:'2023-04-22', daysOfWeek: [ 5 ], startTime: '12:00', endTime: '13:15'}
+    ]
+  };
     return(
 
       <>   <Navbar />
@@ -46,7 +55,15 @@ export default function Schedule(){
         <h3 className="text-base font-semibold leading-6 text-gray-900">Schedule</h3>
         <p className="mt-1 max-w-2xl text-sm text-gray-500">Weekly Schedule</p>
 
-        <Calendar></Calendar>
+        <FullCalendar
+      plugins={[timeGridPlugin, interactionPlugin]}
+      events={state.calendarEvents}
+      nowIndicator={true}
+      slotMinTime={"08:00"}
+      slotMaxTime={"20:00"}
+      height={700}
+      allDaySlot={false}
+    />
 
       </div>
       <div className="border-t border-gray-200">
