@@ -1,20 +1,39 @@
 "use client";
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { AuthenticationContext } from "../context/AuthContext";
+import useAuth from "../../hooks/useAuth";
 
 const navigation = [
-  { name: "Home", href: "/homepage", current: true },
-  { name: "Academics", href: "/academics", current: false },
-  { name: "Financial Aid", href: "/financialaid", current: false },
-  { name: "Schedule", href: "/schedule", current: false },
+  { name: "Home", href: "/homepage/", current: true },
+  { name: "Academics", href: "/academics/", current: false },
+  { name: "Financials", href: "/financials/", current: false },
+  { name: "Schedule", href: "/schedule/", current: false },
 ];
+
+function handleNavigation(itemName: string){
+  navigation.forEach((item) =>{
+    if(item.name === itemName){
+      item.current = true;
+    }else{
+      item.current = false;
+    }
+  });
+}
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function Navbar() {
+  const {data} = useContext(AuthenticationContext);
+  const {logout} = useAuth()
+
+  if(!data){
+    return <></>
+  }
+
   return (
     <Disclosure as="nav" className="bg-yellow-500">
       {({ open }) => (
@@ -50,7 +69,7 @@ export default function Navbar() {
                     {navigation.map((item) => (
                       <a
                         key={item.name}
-                        href={item.href}
+                        href={item.href + data?.id}
                         className={classNames(
                           item.current
                             ? "bg-yellow-700 text-white"
@@ -81,7 +100,7 @@ export default function Navbar() {
                       <span className="sr-only">Open user menu</span>
                       <img
                         className="h-8 w-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        src={data?.image}
                         alt=""
                       />
                     </Menu.Button>
@@ -99,7 +118,7 @@ export default function Navbar() {
                       <Menu.Item>
                         {({ active }) => (
                           <a
-                            href="/profile"
+                            href={"/profile/" + data?.id}
                             className={classNames(
                               active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700"
@@ -112,7 +131,7 @@ export default function Navbar() {
                       <Menu.Item>
                         {({ active }) => (
                           <a
-                            href="#"
+                            href={"/settings/" + data?.id}
                             className={classNames(
                               active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700"
@@ -126,10 +145,13 @@ export default function Navbar() {
                         {({ active }) => (
                           <a
                             href="/"
+                            onClick={logout}
                             className={classNames(
                               active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-gray-700"
-                            )}
+                              "block px-4 py-2 text-sm text-red-700"
+                            )
+                            
+                          }
                           >
                             Sign out
                           </a>
@@ -147,6 +169,7 @@ export default function Navbar() {
               {navigation.map((item) => (
                 <Disclosure.Button
                   key={item.name}
+                  onClick={()=> handleNavigation(item.name)}
                   as="a"
                   href={item.href}
                   className={classNames(

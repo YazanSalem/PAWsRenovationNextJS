@@ -1,0 +1,220 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+//Schema password: UepE7xubf3Gijg6
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User{
+  id  Int @id @default(autoincrement())
+  //can include type later if we get to admin/instructor roles for now everybodys a student until we catch up
+  first_name String  
+  last_name String  
+  image   String
+  address String
+  phone String  @unique//string phone numbers can reach integer.max 
+  email String  @unique
+  major String
+  minor String?
+  country String
+  city  String
+  state String
+  zip Int
+  password  String  @db.Text
+  is_commuting Boolean
+
+  ToDos ToDo[]
+  Holds Hold[]
+  Course Course[]
+  FinancialAid  FinancialAid[]
+  Scholarships Scholarship[]
+
+  advisor_id Int
+  advisor Advisor @relation(fields: [advisor_id], references: [id])
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt 
+}
+
+model ToDo{
+  id  Int @id @default(autoincrement())
+  description String
+
+  user_id Int
+  user User @relation(fields: [user_id], references: [id])
+
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt 
+}
+
+model Hold{
+  id  Int @id @default(autoincrement())
+  description String
+
+  user_id Int
+  user User @relation(fields: [user_id], references: [id])
+
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt 
+}
+
+//this is a model bc not expect an advisor to be a user, using this to book
+//meetings with user
+
+model Advisor{
+  id  Int @id @default(autoincrement())
+  first_name String  
+  last_name String
+  image String  
+  program String
+  email String  @unique
+  phone String  @unique
+  building  String
+  office  String
+  start_time String
+  end_time  String
+
+  users User[]  
+  bookings Booking[]
+  tables Table[]
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt 
+}
+
+model Course{
+  id  Int @id @default(autoincrement())
+  name  String  @unique
+  shortened_name  String
+  credits Int
+  fee Float
+  instructor  String
+  topic String //used for search filters
+  class_number  Int
+  class_section Int
+  room  String
+  grade String
+  days_of_week String?
+  end_date  String?
+  start_date  String?
+  start_time  String?
+  end_time  String?
+
+  user_id Int
+  user User @relation(fields: [user_id], references: [id])
+
+  term  Term
+  enrolled_status EnrolledStatus
+  class_days  ClassDays
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt 
+}
+
+model FinancialAid{
+  id  Int @id @default(autoincrement())
+  name  String
+  amount  Float
+  is_accepted Boolean
+
+  aid_type  AidType
+  term  Term
+
+  user_id Int
+  user User @relation(fields: [user_id], references: [id])
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt 
+}
+
+
+model Scholarship{
+  id Int @id @default(autoincrement())
+  name String
+  amount Int
+  user_id Int
+  user User @relation(fields:[user_id], references: [id])
+  semester Int
+}
+
+model Booking{
+  id Int @id @default(autoincrement())
+  booking_time DateTime
+  booker_email String
+  booker_phone String
+  booker_first_name String
+  booker_last_name String
+  booker_location String
+  booker_description String?
+  booker_request String?
+  booking_num_of_people Int
+
+  advisor_id Int
+  advisor Advisor @relation(fields: [advisor_id], references: [id])
+
+  tables BookingsOnTables[]
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt 
+}
+
+model Table{
+  id Int @id @default(autoincrement())
+  seats Int
+
+  advisor_id Int
+  advisor Advisor @relation(fields: [advisor_id], references: [id])
+
+  bookings BookingsOnTables[]
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt 
+}
+
+model BookingsOnTables{
+  booking_id Int
+  booking Booking @relation(fields: [booking_id], references: [id])
+
+  table_id Int
+  table Table @relation(fields: [table_id], references: [id])
+
+  @@id([booking_id, table_id])
+}
+
+
+enum AidType{
+  Scholarship
+  Grant
+  Loan
+}
+
+enum Term{
+  Spring2023
+  Summer2023
+  Fall2023
+}
+
+enum EnrolledStatus{
+  Dropped
+  Withdrew
+  Enrolled
+  Completed
+}
+
+enum  ClassDays{
+  M
+  Tu
+  W
+  Th
+  Fr
+  MoWe
+  TuTh
+  MoWeFr
+  NoMeetingPattern
+}

@@ -1,4 +1,5 @@
-export default function ProfileCard() {
+import Link from "next/link"
+export default function ProfileCard(id : number) {
   return (
     <div className="flex items-center h-screen w-full justify-center">
       <div className="max-w-xs">
@@ -19,14 +20,6 @@ export default function ProfileCard() {
             </div>
             <table className="text-xs my-3">
               <tbody>
-                <tr>
-                  <td className="px-2 py-2 text-gray-500 font-semibold">
-                    Program
-                  </td>
-                  <td className="px-2 py-2 text-gray-500">
-                    College of Engineering
-                  </td>
-                </tr>
                 <tr>
                   <td className="px-2 py-2 text-gray-500 font-semibold">
                     Major
@@ -63,12 +56,7 @@ export default function ProfileCard() {
             </table>
 
             <div className="text-center my-3">
-              <a
-                className="text-xs text-yellow-600 italic hover:underline hover:text-yellow-700 font-medium"
-                href="#"
-              >
-                Edit Profile
-              </a>
+            <Link href= {`/profile/${id}/edit`} className="text-xs text-yellow-600 italic hover:underline hover:text-yellow-700 font-medium">Edit Profile</Link>
             </div>
           </div>
         </div>
