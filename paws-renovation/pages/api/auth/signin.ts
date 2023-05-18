@@ -7,7 +7,7 @@ import {setCookie} from "cookies-next"
 const prisma = new PrismaClient();
 
 export default async function handler(
-DATABASE_URL="postgres://postgres:UepE7xubf3Gijg6@db.yptxqddpawhduvjhhglc.supabase.co:6543/postgres",
+//DATABASE_URL="postgres://postgres:UepE7xubf3Gijg6@db.yptxqddpawhduvjhhglc.supabase.co:6543/postgres",
 req: NextApiRequest,
   res: NextApiResponse
 ) {
