@@ -71,3 +71,28 @@ export const fetchHolds = async (userId: number) => {
 
   return holds;
 };
+
+export const fetchCourseId = async (classId: number) => {
+  const course = await prisma.user.findUnique({
+    where: {
+      id: classId,
+    }, select: {
+      id: true,
+    }
+  });
+
+  return course;
+
+};
+
+export const fetchCourse = async (classId: number) => {
+  const classes = await prisma.hold.findMany({
+    where: {
+      id: classId,
+    },
+    select: {
+      description: true
+    },
+  });
+  return classes
+}
