@@ -1,8 +1,23 @@
 import Footer from '../../../components/footer'
 import Navbar from "../../../components/navbar"
 import { CheckCircleIcon,StopCircleIcon,ExclamationCircleIcon } from '@heroicons/react/20/solid'
+import { fetchCourse, fetchCourseId } from '../../../../functions/fetchData';
+import { notFound } from "next/navigation";
 
 export default function ClassList(){
+    const id = parseInt(params.id);
+
+    const classID = await fetchCourseId(id);
+
+    if(!classID){
+        return notFound();
+    }
+
+    const course = await fetchCourse(classID.id);
+
+    if(!course){
+        return notFound();
+    }
     return(
         <>
         <Navbar/>

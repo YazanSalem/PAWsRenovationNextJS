@@ -14,55 +14,55 @@ export default async function handler(
 
     await prisma.hold.deleteMany();
     await prisma.toDo.deleteMany();
-    await prisma.scholarship.deleteMany();
+    // await prisma.scholarship.deleteMany();
     await prisma.user.deleteMany();
-    await prisma.table.deleteMany();
-    await prisma.booking.deleteMany();
-    await prisma.advisor.deleteMany();
+    // await prisma.table.deleteMany();
+    // await prisma.booking.deleteMany();
+    // await prisma.advisor.deleteMany();
     await prisma.course.deleteMany();
     await prisma.financialAid.deleteMany();
 
     
-    await prisma.advisor.createMany({
-        data:[
-            {
-                first_name: "Jennifer",
-                last_name: "Lopez",
-                image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-                program: "College of Engineering",
-                email: "jlo@uwm.edu",
-                phone: "(414)673-8792",
-                building: "Engineering",
-                office: "E384",
-                start_time: "14:30:00.000Z",
-                end_time: "21:30:00.000Z"
-            },
-            {
-                first_name: "Bob",
-                last_name: "Myer",
-                image: "https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-                program: "College of Nursing",
-                email: "bobmyer@uwm.edu",
-                phone: "(414)399-0909",
-                building: "Nursing",
-                office: "N388",
-                start_time: "10:00:00.000Z",
-                end_time: "21:00:00.000Z",
-            },
-            {
-                first_name: "Edwardo",
-                last_name: "Shavez",
-                image: "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
-                program: "College of Business",
-                email: "edwsha@uwm.edu",
-                phone: "(262)819-0876",
-                building: "Lubar",
-                office: "L281",
-                start_time: "17:30:00.000Z",
-                end_time: "22:00:00.000Z",
-            },
-        ],
-    });
+    // await prisma.advisor.createMany({
+    //     data:[
+    //         {
+    //             first_name: "Jennifer",
+    //             last_name: "Lopez",
+    //             image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+    //             program: "College of Engineering",
+    //             email: "jlo@uwm.edu",
+    //             phone: "(414)673-8792",
+    //             building: "Engineering",
+    //             office: "E384",
+    //             // createdAt: "14:30:00.000Z",
+    //             // updatedAt: "21:30:00.000Z"
+    //         },
+    //         {
+    //             first_name: "Bob",
+    //             last_name: "Myer",
+    //             image: "https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+    //             program: "College of Nursing",
+    //             email: "bobmyer@uwm.edu",
+    //             phone: "(414)399-0909",
+    //             building: "Nursing",
+    //             office: "N388",
+    //             // start_time: "10:00:00.000Z",
+    //             // end_time: "21:00:00.000Z",
+    //         } as any,
+    //         {
+    //             first_name: "Edwardo",
+    //             last_name: "Shavez",
+    //             image: "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+    //             program: "College of Business",
+    //             email: "edwsha@uwm.edu",
+    //             phone: "(262)819-0876",
+    //             building: "Lubar",
+    //             office: "L281",
+    //             // start_time: "17:30:00.000Z",
+    //             // end_time: "22:00:00.000Z",
+    //         } as any,
+    //     ],
+    // });
 
     const advisors = await prisma.advisor.findMany();
 
@@ -221,22 +221,22 @@ export default async function handler(
         ],
     });
 
-    await prisma.table.createMany({
-        data: [
-            {
-                advisor_id: edwardoShavezId,
-                seats: 1
-            },
-            {
-                advisor_id: bobMyerId,
-                seats: 1
-            },
-            {
-                advisor_id: jenniferLopezId,
-                seats: 1
-            },
-        ]
-    })
+    // await prisma.table.createMany({
+    //     data: [
+    //         {
+    //             advisor_id: edwardoShavezId,
+    //             seats: 1
+    //         },
+    //         {
+    //             advisor_id: bobMyerId,
+    //             seats: 1
+    //         },
+    //         {
+    //             advisor_id: jenniferLopezId,
+    //             seats: 1
+    //         },
+    //     ]
+    // })
 
     // await prisma.course.createMany({
     //     data: [
